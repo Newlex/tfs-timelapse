@@ -1,0 +1,26 @@
+﻿<input type="text" pInputText [(ngModel)]="path" style="width: 100%" (ngModelChange)="pathChange()" placeholder="Input source path"
+/>
+<input [hidden]="changeSets.length<1" type="text" id="slider" style="width: 100%" />
+<p-panel header="Details">
+    <div class="ui-g">
+        <div class="ui-g-2">Path</div>
+        <div class="ui-g-10">{{path}}#{{currentChangeset?.changesetId}}</div>
+        <div class="ui-g-2">Date submitted</div>
+        <div class="ui-g-4">{{currentChangeset?.createdDate | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+        <div class="ui-g-2">Changeset</div>
+        <div class="ui-g-4">{{currentChangeset?.changesetId}}</div>
+        <div class="ui-g-2">CheckedIn By</div>
+        <div class="ui-g-10">
+            <img style="width: 25px;" src="{{currentChangeset?.checkedInBy.imageUrl}}" /> {{currentChangeset?.checkedInBy.displayName}}</div>
+        <div class="ui-g-2">Comment</div>
+        <div class="ui-g-10">{{currentChangeset?.comment}}</div>
+    </div>
+</p-panel>
+<p-panel header="Content">
+    <p-header>
+        <p-dropdown [options]="diff_modes" [(ngModel)]="selectedDiffMode"></p-dropdown>
+    </p-header>
+    <pre *ngIf="selectedDiffMode=='lineDiff'" lineDiff [left]="left" [right]="right"></pre>
+    <pre *ngIf="selectedDiffMode=='diff'" diff [left]="left" [right]="right"></pre>
+    <pre *ngIf="selectedDiffMode=='semanticDiff'" semanticDiff [left]="left" [right]="right"></pre>
+</p-panel>
