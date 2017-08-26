@@ -1,3 +1,6 @@
+TFS Timelapse 
+=========
+
 [![Build status](https://ci.appveyor.com/api/projects/status/d6qsd2e1k6jq31bq?svg=true)](https://ci.appveyor.com/project/Newlex/tfs-timelapse)
 
 Web App to review changesets in Team Foundation Version Control
